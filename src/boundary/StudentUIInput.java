@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import control.StudentControl;
-import dto.Request;
+import dto.RequestData;
 
 public class StudentUIInput {
     private PrintWriter stdOut;
@@ -13,7 +13,6 @@ public class StudentUIInput {
     private StudentControl studentControl;
 
     public StudentUIInput() {
-
     }
 
     public StudentUIInput(PrintWriter stdOut, BufferedReader stdIn, StudentControl studentControl) {
@@ -36,13 +35,12 @@ public class StudentUIInput {
         stdOut.flush();
         String diemTH = stdIn.readLine();
 
-        Request request = new Request();
+        RequestData request = new RequestData();
         request.setTenSV(hoTen);
         request.setDiemTH(diemTH);
         request.setDiemLT(diemLT);
         request.setMaSV(maSV);
 
         studentControl.execute(request);
-
     }
 }

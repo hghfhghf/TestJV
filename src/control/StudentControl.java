@@ -1,8 +1,9 @@
 package control;
 
 import boundary.StudentUIOutPut;
-import dto.Request;
-import dto.Response;
+import dto.RequestData;
+import dto.ResponseData;
+import dto.ResponseError;
 import entity.Student;
 
 public class StudentControl {
@@ -14,19 +15,24 @@ public class StudentControl {
         this.studentUIOutPut = studentUIOutPut;
     }
 
-    public void execute(Request request) {
+    public void execute(RequestData request) {
         try {
             int maSV = Integer.parseInt(request.getMaSV());
-            int diemLT = Integer.parseInt(request.getDiemLT());
-            int diemTH = Integer.parseInt(request.getDiemTH());
+            float diemLT = Float.parseFloat(request.getDiemLT());
+            float diemTH = Float.parseFloat(request.getDiemTH());
             student.setMaSV(maSV);
             student.setDiemLT(diemLT);
             student.setDiemTH(diemTH);
-            float res = student.tinhDiemTB();
-            Response response = new Response(res);
-            studentUIOutPut.output(response);
+            student.setTenSV(request.getTenSV());
+            String res1 = student.getTenSV();
+            int res2 = student.getMaSV();
+            float res3 = student.tinhDiemTB();
+
+            ResponseData response = new ResponseData(res1, res2, res3);
+            studentUIOutPut.showMessage(response);
         } catch (NumberFormatException e) {
-            studentUIOutPut.showMessage("Loi: Du lieu nhap vao phai la so nguyen");
+            ResponseError error = new ResponseError("Loi: Du lieu nhap vao phai la so nguyen hoac so thuc");
+            studentUIOutPut.showError(error);
         }
     }
 }

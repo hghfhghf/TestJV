@@ -1,15 +1,15 @@
 package dto;
 
-public class Request {
-    public String hoTen;
-    public String maSV;
+public class RequestData {
+    private String hoTen;
+    private String maSV;
     private String diemLT;
     private String diemTH;
 
-    public Request() {
+    public RequestData() {
     }
 
-    public Request(String hoTen, String maSV, String diemLT, String diemTH) {
+    public RequestData(String hoTen, String maSV, String diemLT, String diemTH) {
         this.hoTen = hoTen;
         this.maSV = maSV;
         this.diemLT = diemLT;
@@ -47,5 +47,4 @@ public class Request {
     public void setDiemTH(String diemTH) {
         this.diemTH = diemTH;
     }
-
 }

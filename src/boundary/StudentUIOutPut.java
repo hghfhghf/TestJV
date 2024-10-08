@@ -2,7 +2,9 @@ package boundary;
 
 import java.io.PrintWriter;
 
-import dto.Response;
+import dto.ResponseData;
+import dto.ResponseError;
+import entity.Student;
 
 public class StudentUIOutPut {
     private PrintWriter stdOut;
@@ -14,13 +16,16 @@ public class StudentUIOutPut {
         this.stdOut = stdOut;
     }
 
-    public void output(Response response) {
-        stdOut.println("Ket qua: " + response.getResult());
+    public void showMessage(ResponseData responsedData) {
+        stdOut.println("Ket qua");
+        stdOut.println("Ho ten: " + responsedData.getHoTen());
+        stdOut.println("Ma so sinh vien: " + responsedData.getMaSV());
+        stdOut.println("Diem trung binh: " + responsedData.getResult());
         stdOut.flush();
     }
 
-    public void showMessage(String message) {
-        stdOut.println(message);
+    public void showError(ResponseError error) {
+        stdOut.println("Loi: " + error.getError());
         stdOut.flush();
     }
 

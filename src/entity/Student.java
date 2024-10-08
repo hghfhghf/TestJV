@@ -7,7 +7,6 @@ public class Student {
     private float diemTH;
 
     public Student() {
-
     }
 
     public Student(String hoTen, int maSV, float diemLT, float diemTH) {
@@ -53,4 +52,8 @@ public class Student {
         return (diemLT + diemTH) / 2;
     }
 
+    @Override
+    public String toString() {
+        return "Student{hoTen='" + hoTen + "', maSV=" + maSV + ", diemLT=" + diemLT + ", diemTH=" + diemTH + "}";
+    }
 }
